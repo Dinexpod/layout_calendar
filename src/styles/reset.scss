@@ -1,0 +1,19 @@
+@import "variables";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font: 30px Arial, sans-serif;
+  @include size(100%, 100%);
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  @include size(100%, 100%);
+  margin: 0;
+}

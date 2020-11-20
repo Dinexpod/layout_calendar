@@ -1,3 +1,49 @@
-body {
-  margin: 0;
+@import "variables";
+@import "reset";
+
+.calendar {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: $max-calendar-width;
+
+  > div {
+    @include size($cell-size, $cell-size);
+    background-color: #eee;
+    border: 1px solid black;
+    margin: $cell-margin;
+    transition: 0.5s;
+    visibility: hidden;
+    cursor: pointer;
+  }
+
+  > :hover {
+    transform: translate(0, -20px);
+    background-color: pink;
+  }
+
+  > ::after {
+    display: flex;
+    line-height: 100px;
+    justify-content: center;
+  }
+
+  @each $days-in-month in $days-in-months {
+    &-#{$days-in-month} {
+      @for $i from 1 through $days-in-month {
+        :nth-child(#{$i}) {
+          visibility: visible;
+
+          &::after {
+            content: "#{$i}";
+          }
+        }
+      }
+    }
+  }
+}
+
+@each $day-name, $day-num in $short-days-name {
+  .calendar-#{$day-name} :first-child {
+    margin-left: (($max-calendar-width / 7) + $cell-margin) * $day-num;
+  }
 }

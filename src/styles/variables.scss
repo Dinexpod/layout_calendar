@@ -1,0 +1,20 @@
+$days-in-months: 28, 29, 30, 31;
+
+$short-days-name: (
+  "mon": 0,
+  "tue": 1,
+  "wed": 2,
+  "thu": 3,
+  "fri": 4,
+  "sat": 5,
+  "sun": 6
+);
+
+$cell-margin: 1px;
+$cell-size: 100px;
+$max-calendar-width: 7 * (($cell-margin * 2) + $cell-size);
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
